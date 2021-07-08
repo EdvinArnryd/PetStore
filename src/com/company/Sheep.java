@@ -3,14 +3,14 @@ package com.company;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Cat extends Animal{
+public class Sheep extends Animal{
     protected int healthPercent = 100;
     public boolean isAlive;
     public int maxAge;
-    public Food Meat;
-    private int initialPrice = 1100;
+    public Food Grass;
+    private int initialPrice = 2500;
 
-    public Cat(String name,String gender,int currentAge){
+    public Sheep(String name,String gender,int currentAge){
         super(name,gender,currentAge);
     }
 

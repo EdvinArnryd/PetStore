@@ -5,7 +5,7 @@ public class Dog extends Animal{
     protected int healthPercent = 100;
     public boolean isAlive;
     public int maxAge;
-    public Food Beef;
+    public Food Meat;
     private int initialPrice = 1800;
 
     public Dog(String name,String gender,int currentAge){
