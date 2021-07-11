@@ -1,9 +1,17 @@
 package com.company;
 
 public class Corn extends Food{
-    public int price;
+    public int initialPrice = 400;
+    public int totalQuantity = 0;
+    public int buyQuantity = 0;
 
-    public Corn(int price){
-        super(price);
+    public Corn(String foodType,int quantity){
+        super(foodType);
+        this.totalQuantity += quantity;
+        this.buyQuantity = quantity;
     }
+    public int checkBalance(int balance){
+        return balance - initialPrice * buyQuantity;
+    }
+
 }
