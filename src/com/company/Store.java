@@ -20,17 +20,12 @@ public class Store {
         else if (animalGender.toUpperCase().equals("F")){
             animalGender = "FEMALE";
         }
-        System.out.println("What is your animals current age:");
-        while (!scanner.hasNextInt()) {
-            scanner.nextLine();
-        }
-        var animalCurrentAge = scanner.nextInt();
         return switch (choice){
-            case "1"    -> (new Dog(animalName,animalGender,animalCurrentAge));
-            case "2"    -> (new Cat(animalName,animalGender,animalCurrentAge));
-            case "3"    -> (new Horse(animalName,animalGender,animalCurrentAge));
-            case "4"    -> (new Chicken(animalName,animalGender,animalCurrentAge));
-            case "5"    -> (new Sheep(animalName,animalGender,animalCurrentAge));
+            case "1"    -> (new Dog(animalName,animalGender));
+            case "2"    -> (new Cat(animalName,animalGender));
+            case "3"    -> (new Horse(animalName,animalGender));
+            case "4"    -> (new Chicken(animalName,animalGender));
+            case "5"    -> (new Sheep(animalName,animalGender));
             default     -> null;
         };
 
