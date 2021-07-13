@@ -8,18 +8,11 @@ public class Game {
     }
 
     private void startMenu() {
-        print("Type '1' to start a new game");
+        print("Welcome to the game!");
         Scanner scanner = new Scanner(System.in);
-        var input = scanner.nextLine();
-        var checkRange = "1";
         do {
-            var choice = checkRange.indexOf(input);
-            if (choice < 0) {
-                continue;
-            }
-            choice++;
-            if (choice == 1) {
-                print("How many players(1-4):");
+            {
+                print("How many players are you (1-4):");
                 while (!scanner.hasNextInt()) {
                     scanner.nextLine();
                 }

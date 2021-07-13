@@ -1,17 +1,28 @@
 package com.company;
+import com.company.Food;
 
-public class Grass extends Food{
-    public int initialPrice = 500;
-    public int totalQuantity = 0;
+public class Grass extends Food {
     public int buyQuantity = 0;
 
     public Grass(String foodType,int quantity){
         super(foodType);
+        initialPrice = 300;
         this.totalQuantity += quantity;
         this.buyQuantity = quantity;
     }
     public int checkBalance(int balance){
         return balance - initialPrice * buyQuantity;
+    }
+    public void printField(){
+        super.printField();
+        System.out.println("Quantity: " + totalQuantity + " KG" );
+    }
+    public double getTotalQuantity(){
+        return totalQuantity;
+    }
+
+    public void updateQuantity(double quantity){
+        this.totalQuantity += quantity;
     }
 
 }
