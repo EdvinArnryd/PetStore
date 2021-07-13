@@ -19,4 +19,12 @@ public class Player {
         this.balance = balance;
     }
 
+    public void addFood(Food food){
+        foods.add(food);
+    }
+
+    public void removeFood(Food food){
+        foods.remove(food);
+    }
+
 }
