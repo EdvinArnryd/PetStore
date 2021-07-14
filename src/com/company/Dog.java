@@ -5,7 +5,7 @@ public class Dog extends Animal {
         super(name,gender);
         initialPrice = 2500;
         healthGrowthRef = 0.7;
-        food = "Meat";
+        edibleFood = new String[]{"Meat","Grass"};
     }
 
     public int checkBalance(int balance){

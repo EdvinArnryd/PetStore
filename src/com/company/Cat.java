@@ -1,11 +1,13 @@
 package com.company;
 
+import com.company.Animal;
+import com.company.Food;
 public class Cat extends Animal {
     public Cat(String name,String gender){
         super(name,gender);
         initialPrice = 1000;
         healthGrowthRef = 0.6;
-        food = "Meat";
+        edibleFood = new String[]{"Meat","Grass"};
     }
 
     public int checkBalance(int balance){

@@ -4,6 +4,7 @@ public abstract class Food {
     private String FoodType;
     protected double totalQuantity = 0;
     protected int initialPrice = 0;
+    public String[] edibleFood ;
 
     public Food(String FoodType){
         this.FoodType = FoodType;
@@ -17,4 +18,6 @@ public abstract class Food {
     }
     public double getTotalQuantity(){return totalQuantity;}
     public void updateQuantity(double quantity){}
+
+    public void minusQuantity(double quantity){}
 }

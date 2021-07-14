@@ -4,7 +4,7 @@ public abstract class Animal {
     private String name;
     private Gender gender;
     protected int initialPrice = 0;
-    public String food;
+    public String[] edibleFood;
     public double healthGrowthRef;
     public double totalFeedQuantity;
     public int lostHealth;

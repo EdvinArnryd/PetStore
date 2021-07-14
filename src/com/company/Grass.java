@@ -25,4 +25,9 @@ public class Grass extends Food {
         this.totalQuantity += quantity;
     }
 
+    public void minusQuantity(double quantity){
+        this.totalQuantity -= quantity;
+    }
+
+
 }
