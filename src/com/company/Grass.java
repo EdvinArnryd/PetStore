@@ -2,7 +2,7 @@ package com.company;
 import com.company.Food;
 
 public class Grass extends Food {
-    public int buyQuantity = 0;
+    public int buyQuantity;
 
     public Grass(String foodType,int quantity){
         super(foodType);
