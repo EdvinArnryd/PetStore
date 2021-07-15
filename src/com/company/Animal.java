@@ -3,25 +3,25 @@ package com.company;
 public abstract class Animal {
     private String name;
     private Gender gender;
+    protected int healthPercent = 100;
     protected int initialPrice = 0;
-    public String[] edibleFood;
+    public String[] edibleFood ;
     public double healthGrowthRef;
     public double totalFeedQuantity;
     public int lostHealth;
     public int addedHealth;
-    protected int healthPercent = 100;
-    private int maxAge;
     public int breedQuantity;
+    public int veterinaryCost;
+    public String healthStatus; //Health Status can be "Sick","Health","Death"
     public boolean isAlive;
+    public int currentAge;
+    public int maxAge;
 
-    public Animal(String name, String gender) {
+    public Animal(String name,String gender){
         this.name = name;
         this.gender = Gender.valueOf(gender.toUpperCase());
     }
 
-    public void printField(){
-        System.out.print("Name: " + name +" Gender: " + gender + " ");
-    }
 
     public abstract void eat(Food food,double quantity);
 
@@ -31,8 +31,16 @@ public abstract class Animal {
 
     public abstract boolean isLiving();
 
+    public abstract void updateHealthStatus(String status);
+
+    public abstract void increaseAge();
+
     public static Animal breed(String gender) {
         return null;
+    }
+
+    public String getName(){
+        return name;
     }
 
     public String getGender(){
@@ -43,7 +51,12 @@ public abstract class Animal {
         return breedQuantity;
     }
 
-    public String getName(){
-        return name;
+    public int getHealthPercent(){return healthPercent;}
+
+    public int getInitialPrice(){return initialPrice;}
+
+
+    public void printField(){
+        System.out.print("Name: " + name +" Gender: " + gender + " ");
     }
 }

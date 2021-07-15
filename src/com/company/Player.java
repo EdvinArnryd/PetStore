@@ -27,4 +27,16 @@ public class Player {
         foods.remove(food);
     }
 
+    public void reduceBalance(int balance){
+        this.balance -= balance;
+    }
+
+    public void increaseBalance(int balance){
+        this.balance += balance;
+    }
+
+    public void removeAnimal(Animal animal){
+        animals.remove(animal);
+    }
+
 }

@@ -1,21 +1,35 @@
 package com.company;
-
-import com.company.Animal;
-import com.company.Food;
 import java.util.Scanner;
 
 public class Sheep extends Animal {
     public Sheep(String name,String gender){
         super(name,gender);
-        initialPrice = 3000;
-        healthGrowthRef = 0.8;
-        edibleFood = new String[]{"Corn","Grass"};
-        breedQuantity = 8;
+        initialPrice = 3500;
+        healthGrowthRef = 0.6;
+        breedQuantity = 3;
+        healthStatus = "Healthy";
         isAlive = true;
+        edibleFood = new String[]{"Corn","Grass"};
+        currentAge = 0;
+        maxAge = 19;
     }
 
     public int checkBalance(int balance){
         return balance - initialPrice;
+    }
+
+    public void printField(){
+        System.out.println("");
+        super.printField();
+        System.out.println("Health: " + healthPercent
+                + " Lost Health last round: " + lostHealth
+                + " Added Health with food:" + addedHealth
+                + " Health Status: " + healthStatus
+        );
+        System.out.println(" Current Age: " + currentAge
+                + " Max Age: " + maxAge
+                + " Price: " + initialPrice
+                + " Breed quantity: " + breedQuantity);
     }
 
     public void eat(Food food, double quantity){
@@ -33,23 +47,29 @@ public class Sheep extends Animal {
     }
 
     public void lostHealth(){
-        lostHealth =  10 + (int)(Math.random() * (30-20+1));
-        this.healthPercent = Math.max(this.healthPercent -lostHealth,0);
+        this.lostHealth  =  10 + (int)(Math.random() * (30-20+1));
+        this.healthPercent = Math.max(this.healthPercent -this.lostHealth,0);
     }
 
-    public void printField(){
-        super.printField();
-        System.out.println("Health Value: " + healthPercent
-                + " Lost Health last round: " + lostHealth + " Healed from food:" + addedHealth);
+    public void increaseAge(){
+        this.currentAge++;
     }
 
     public void die(){
         if (this.healthPercent <= 0) {
+            updateHealthStatus("Death");
+            this.isAlive = false;
+        }
+        if (this.currentAge == this.maxAge){
+            updateHealthStatus("Death");
             this.isAlive = false;
         }
     }
 
     public boolean isLiving(){
+        if (healthStatus.equals("Death")){
+            this.isAlive = false;
+        }
         return this.isAlive;
     }
 
@@ -57,10 +77,19 @@ public class Sheep extends Animal {
         return breedQuantity;
     }
 
-    public static Animal breed(String gender) {
+    public int getHealthPercent(){return healthPercent;}
+
+    public int getInitialPrice(){return initialPrice;}
+
+    public static Animal breed(String gender){
         Scanner scanner = new Scanner(System.in);
         System.out.println("It is a new baby.What is the baby animals name:");
         var animalName = scanner.nextLine();
-        return (new Sheep(animalName, gender));
+        return (new Cat(animalName,gender));
     }
+
+    public void updateHealthStatus(String status){
+        this.healthStatus = status;
+    }
+
 }

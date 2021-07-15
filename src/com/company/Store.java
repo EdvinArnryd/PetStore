@@ -5,34 +5,33 @@ public class Store {
 
     static Scanner scanner = new Scanner(System.in);
 
-    public static Animal buyAnimal(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("What animal do you want to buy?");
-        System.out.println("1:Dog 2:Cat 3:Horse 4:Chicken 5:Sheep");
-        var choice = scanner.nextLine();
-        while(!Arrays.asList("1","2","3","4","5").contains(choice)){
-            System.out.println("Input error,please input again");
-            choice = scanner.nextLine();
-        }
+    public static Animal buyAnimal(Player player){
+        var animalType = Dialogs.askAnimalType("buy");
         System.out.println("What is your animals name:");
         var animalName = scanner.nextLine();
+        var nameExist = InputCheck.isAnimalNameExist(player,animalType,animalName);
+        while (nameExist){
+            System.out.println("What is your animals name:");
+            animalName = scanner.nextLine();
+            nameExist = InputCheck.isAnimalNameExist(player,animalType,animalName);
+        }
+
         System.out.println("What is your animals gender(M/F):");
         var animalGender = scanner.nextLine();
-        if (animalGender.equalsIgnoreCase("M")){
+        if (animalGender.toUpperCase().equals("M")){
             animalGender = "MALE";
         }
-        else if (animalGender.equalsIgnoreCase("F")){
+        else if (animalGender.toUpperCase().equals("F")){
             animalGender = "FEMALE";
         }
-        return switch (choice){
-            case "1"    -> (new Dog(animalName,animalGender));
-            case "2"    -> (new Cat(animalName,animalGender));
-            case "3"    -> (new Horse(animalName,animalGender));
-            case "4"    -> (new Chicken(animalName,animalGender));
-            case "5"    -> (new Sheep(animalName,animalGender));
+        return switch (animalType){
+            case "Dog"      -> (new Dog(animalName,animalGender));
+            case "Horse"    -> (new Horse(animalName,animalGender));
+            case "Cat"      -> (new Cat(animalName,animalGender));
+            case "Chicken"  -> (new Chicken(animalName,animalGender));
+            case "Sheep"   -> (new Sheep(animalName,animalGender));
             default     -> null;
         };
-
     }
 
     public static Food buyFood(){
